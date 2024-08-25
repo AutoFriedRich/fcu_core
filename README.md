@@ -27,6 +27,8 @@ sudo chmod 777 /dev/ttyACM0
   
   `git checkout singleuav-branch`
 
+  `git checkout main`
+
 - 在fcu_bridge_001中修改ip地址
 
 - 连接飞机
