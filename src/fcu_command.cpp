@@ -102,3 +102,11 @@ int main(int argc, char **argv) {
 
   return 0;
 }
+
+/**
+*重新map一下
+* 1:解锁 2:锁定 t:起飞 l:降落
+* q:Z轴上升 e:Z轴下降 w:Y轴上升 s:Y轴下降 a:X轴上升 d:X轴下降
+* z:yaw轴增加 c:yaw轴减少 
+* x:归位 将 x 和 y 都至于 0 位置
+*/

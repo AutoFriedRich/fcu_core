@@ -20,3 +20,20 @@ sudo chmod 777 /dev/ttyACM0
 
 ## 5. 运行node
  roslaunch fcu_core fcu_core.launch
+
+# 用于调试的singleuav-branch
+
+- 切换分支
+  
+  `git checkout singleuav-branch`
+
+    在fcu_bridge_001中修改ip地址
+
+
+- 连接飞机
+  
+  `roslaunch fcu_core fcu_one.launch`
+
+- 查看当前定位信息
+ 
+  `rosrun fcu_core mission_sub`

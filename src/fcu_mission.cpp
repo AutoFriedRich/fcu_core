@@ -8,17 +8,12 @@
 #include <tf/transform_broadcaster.h>
 
 
-static uint8_t enable_pos=0;
-
 static geometry_msgs::InertiaStamped mission_001;
 static ros::Publisher mission_pub_001;
 static float yaw=0.0f;
 static float px=0.0f, py=0.0f, pz=0.0f;
 static float vx=0.0f, vy=0.0f, vz=0.0f;
 static float ax=0.0f, ay=0.0f, az=0.0f;
-
-
-
 
 
 void cmdHandler(const std_msgs::Int16::ConstPtr& cmd){
@@ -42,16 +37,16 @@ void cmdHandler(const std_msgs::Int16::ConstPtr& cmd){
         px-=0.25; 
         break;
     case 11:
-        yaw+=0.1;
+        yaw+=0.2;
         break;
     case 12:
-        yaw-=0.1;
+        yaw-=0.2;
         break;
     case 13:
         px=0.0f;
         py=0.0f;
-        pz=0.0f;
         yaw=0.0f;
+        break;
     default:
         break;
   }
@@ -78,8 +73,8 @@ int main(int argc, char **argv) {
 
   ros::init(argc, argv, "fcu_mission");
   ros::NodeHandle nh;
-  ros::Subscriber comm=nh.subscribe<std_msgs::Int16>("/fcu_bridge/command", 100, cmdHandler);
 
+  ros::Subscriber comm=nh.subscribe<std_msgs::Int16>("/fcu_bridge/command", 100, cmdHandler);
   mission_pub_001 = nh.advertise<geometry_msgs::InertiaStamped>("/fcu_bridge/mission_001",100);
 
   ros::Rate loop_rate(10);
@@ -92,6 +87,7 @@ int main(int argc, char **argv) {
     q.setRPY(M_PI, 0, 0);
     transform.setRotation(q);
     br.sendTransform(tf::StampedTransform(transform,  ros::Time::now(), "map", "uwb"));
+    
     execute_mission_001();
 
     loop_rate.sleep();
