@@ -1,0 +1,9 @@
+<launch>
+
+    <!-- <node pkg="fcu_core" type="fcu_bridge_001" name="fcu_bridge_001" output="screen" /> -->
+
+    <node pkg="fcu_core" type="fcu_command" name="fcu_command" output="screen" />
+
+    <node pkg="fcu_core" type="fcu_mission" name="fcu_mission" output="screen" />
+
+</launch>

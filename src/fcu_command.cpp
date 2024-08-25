@@ -28,12 +28,12 @@ int main(int argc, char **argv) {
       return 0;
     }
     switch(buf[0]){
-      case 'a':
+      case '1':
         printf("解锁\n");
         cmd.data=1;
         command.publish(cmd);
         break;
-      case 'd':
+      case '2':
         printf("锁定\n");
         cmd.data=2;
         command.publish(cmd);
@@ -48,34 +48,50 @@ int main(int argc, char **argv) {
         cmd.data=4;
         command.publish(cmd);
         break;
-      case 'r':
-        printf("运行\n");
+
+      case 'q':
+        printf("Z轴上升\n");
         cmd.data=5;
         command.publish(cmd);
         break;
-      case 's':
-        printf("停止\n");
+      case 'e':
+        printf("Z轴下降\n");
         cmd.data=6;
         command.publish(cmd);
         break;
-      case '1':
-        printf("位置点1\n");
+      case 'w':
+        printf("Y轴上升\n");
         cmd.data=7;
         command.publish(cmd);
         break;
-      case '2':
-        printf("位置点2\n");
+      case 's':
+        printf("Y轴下降\n");
         cmd.data=8;
         command.publish(cmd);
         break;
-      case '3':
-        printf("位置点3\n");
+      case 'a':
+        printf("X轴上升\n");
         cmd.data=9;
         command.publish(cmd);
         break;
-      case '4':
-        printf("位置点4\n");
+      case 'd':
+        printf("X轴下降\n");
         cmd.data=10;
+        command.publish(cmd);
+        break;
+      case 'z':
+        printf("yaw轴增加\n");
+        cmd.data=11;
+        command.publish(cmd);
+        break;
+      case 'c':
+        printf("yaw轴减少\n");
+        cmd.data=12;
+        command.publish(cmd);
+        break;
+      case 'x':
+        printf("归位\n");
+        cmd.data=13;
         command.publish(cmd);
         break;
       default:
